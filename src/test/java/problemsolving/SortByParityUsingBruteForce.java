@@ -50,8 +50,8 @@ public class SortByParityUsingBruteForce {
 	
 	@Test
 	public void postiveData1() {
-		int[] nums= {2,1,3,4};
-		int[] expected= {2,4,1,3};
+		int[] nums= {1,2,1,2};
+		int[] expected= {2,2,1,1};
 		int[] actual=SortByParity(nums,nums.length);
 		Assert.assertArrayEquals(expected, actual);
 	}

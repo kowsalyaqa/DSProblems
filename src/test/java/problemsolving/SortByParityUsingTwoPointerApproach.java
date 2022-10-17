@@ -37,21 +37,27 @@ public class SortByParityUsingTwoPointerApproach {
 	 *   {3,1,2,4};//[4,2,1,3]
 	 *   {3,1,2,4,6,9};// [6, 4, 2, 1, 3, 9]
 	 *   {3,1,2,4,2,6,9,2,1};//[2,4,2,6,9,1,1,3]
+	 *   {1,2} ={2,1}
+	 *   {1,2,1,2}={2,2,1,1}
 	 *  
 	 *  Time Complexity - Array Length - 4 | Loop Count - 2
 	 *  Time Complexity - Array Length - 6 | Loop Count - 2
 	 *  Time Complexity - Array Length - 9 | Loop Count - 4
 	 * 	 
 	 * Time Complexity - O(n/2) 
-	 *  
+	 * 
+	 * 
+	 * 
+	 * Failed Test Data - [9,8,7,6,5,4,3,2,1]/ [2,8,4,5,6,7,3,9,1]/[8,6,4,2,9,7,5,3,1]
+	 *  [1,2,1,2]/[2,1,2,1]/[2,2,1,1]
 	 */
 
 	public static int[] SortByParity(int[] nums,int length){
 		int left=0,right=length-1,temp=0,loop=0;
 		while(left<right){
 			if(nums[left]%2==0) left++;
-			if(nums[right]%2!=0) right--;
-			if(nums[left]%2!=0 & nums[right]%2==0) {
+			else if(nums[right]%2!=0) right--;
+			else if(nums[left]%2!=0 & nums[right]%2==0) {
 				temp=nums[left];
 				nums[left++]=nums[right];
 				nums[right--]=temp;
@@ -65,8 +71,8 @@ public class SortByParityUsingTwoPointerApproach {
 
 	public static void main(String[] args) {
 
-		int[] nums= {3,1,2,4,6,9};
-		int[] expected= {6, 4, 2, 1, 3, 9};
+		int[] nums= {1,2,1,2};
+		int[] expected= {2,2,1,1};
 		System.out.println(Arrays.toString(expected));
 		Assert.assertArrayEquals(expected, SortByParity(nums,nums.length));
 	}
