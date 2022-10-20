@@ -44,7 +44,7 @@ public class SortByParityUsingBruteForce {
 	 *  Time Complexity - Array Length - 6 | Loop Count - 6
 	 *  Time Complexity - Array Length - 9 | Loop Count - 9
 	 * 	 
-	 * Time Complexity - O(n) 
+	 * Time Complexity - O(n) ,Space Complexity - O(n)
 	 *  
 	 */
 	

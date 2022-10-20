@@ -44,7 +44,7 @@ public class SortByParityUsingTwoPointerApproach {
 	 *  Time Complexity - Array Length - 6 | Loop Count - 2
 	 *  Time Complexity - Array Length - 9 | Loop Count - 4
 	 * 	 
-	 * Time Complexity - O(n/2) 
+	 * Time Complexity - O(n) , Space Complexity - No
 	 * 
 	 * 
 	 * 
