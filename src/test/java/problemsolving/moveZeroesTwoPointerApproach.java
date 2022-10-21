@@ -38,6 +38,11 @@ public class moveZeroesTwoPointerApproach {
 				nums[start++]=nums[end];
 				nums[end++]=temp;
 			}else if(nums[start]==0&&nums[end]==0){
+				start++;
+				end++;
+			}else if(nums[start]!=0 && nums[end]==0) {
+				start++;
+			}else {
 				end++;
 			}
 		}
@@ -46,9 +51,9 @@ public class moveZeroesTwoPointerApproach {
 	}
 	
 	public static void main(String[] args) {
-		int[] nums= {0,1,0,12,1,0};
+		int[] nums= {2,1};//0,1,0,12,1,0
 		int length=nums.length;
-		int[] expected= {1,12,1,0,0,0};
+		int[] expected= {1,0};
 		int[] actual=moveZeros(nums,length); 
 		Assert.assertArrayEquals(expected, actual);
 

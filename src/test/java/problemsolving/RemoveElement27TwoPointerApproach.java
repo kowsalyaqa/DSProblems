@@ -104,12 +104,6 @@ public class RemoveElement27TwoPointerApproach {
 					nums[left++]=nums[right];
 					nums[right--]=temp;
 				}
-				
-				/*
-				 * if(nums[left]!=val & nums[right]!=val){ break; }
-				 */
-				
-				
 			}
 
 			System.out.println(Arrays.toString(nums));

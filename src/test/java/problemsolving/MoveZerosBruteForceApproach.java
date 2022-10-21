@@ -28,26 +28,34 @@ public class MoveZerosBruteForceApproach {
 	 *  
 	 *  */
 	
-	@Test
 	public static int[] moveZeros(int[] nums,int length) {
-		int[] output=new int[length];
-		int start=0, end=length-1;
-		for(int i=0;i<length;i++) {
-			if(nums[i]!=0) {
-				output[start++]=nums[i];
-			}else if(nums[i]==0) {
-				output[end--]=nums[i];
+		
+		int start=0, end=1,temp=0;
+		while(end<length) {
+			if(nums[start]==0 && nums[end]!=0){
+				temp=nums[start];
+				nums[start++]=nums[end];
+				nums[end++]=temp;
+			}else if(nums[start]==0 && nums[end]==0) {
+				end++;
+			}else if(nums[start]!=0 && nums[end]==0){
+				end++;
+				start++;
+			}else if(nums[start]!=0 && nums[end]!=0) {
+				end++;
+				start++;	
 			}
 		}
-		System.out.println(Arrays.toString(output));
-		return output;
+		System.out.println(Arrays.toString(nums));
+	
+		return nums;
 	}
 	
 	
 	public static void main(String[] args) {
-		int[] nums= {0,1,0,3,12};
+		int[] nums= {4,2,4,0,0,3,0,5,1,0};
 		int length=nums.length;
-		int[] expected= {1,3,12,0,0};
+		int[] expected= {2,1};
 		int[] actual=moveZeros(nums,length); 
 		Assert.assertArrayEquals(expected, actual);
 
