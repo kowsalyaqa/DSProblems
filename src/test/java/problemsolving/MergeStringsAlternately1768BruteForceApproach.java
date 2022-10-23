@@ -3,6 +3,7 @@ package problemsolving;
 import java.util.Arrays;
 
 import org.junit.Assert;
+import org.junit.Test;
 
 public class MergeStringsAlternately1768BruteForceApproach {
 
@@ -20,56 +21,85 @@ public class MergeStringsAlternately1768BruteForceApproach {
 	 * 
 	 * 
 	 * Pseudo Code: 
-	 * 
-	 * 1.Read the two Strings 
-	 * 2.Initialize output Array with Sum length of the two string length
-	 * 3.Iterate output array using for loop with x variable for(int x=0, x<output.length,x++)
-	 * 4.Inside the loop add two if loop for checking the length of left and right is less their respective arrays
-	 * 			if(left<c1.world){
-	 * 				output[x]=c1[left];
-	 * 				increment left by 1
-	 * 				increment x by 1
-	 * 			}
-	 * 			if(right<c1.world){
-	 * 				output[x]=c1[right];
-	 * 				increment left by 1
-	 * 				increment x by 1
-	 * 			}
-	 * 5.Convert output array into String
-	 * 6.compare output String with expected string
-	 * 7.Matched - Pass
-	 * 8.Not Matched - Fail
-	 * 
-	 * 
+	 *==================
+	 *1.Find each input string length and store in separate int variables
+	 *2.Initialize output array with addition of two input string length
+	 *3.Iterate for Loop using output array length
+	 *4.Inside for loop add two if conditions for two input string lengths separately 
+	 *5.If conditions must be less the input string length
+	 *6.Inside First If condition of input String, Assign input string char to output index element and increment output index
+	 *7.Inside Second if condition of input String, Assign input string char to output index element and increment output index
+	 *8.Once Complete Iteration, Convert Output array into String 
+	 *9.Return string from function
+	 *10.Validate using Assertion expected output matched with actual output received
 	 * 
 	 */
 
 	public static String mergeAlternately(String word1,String word2) {
-		int length=word1.length()+word2.length(),left=0,right=0;
-		char[] c1=word1.toCharArray(); System.out.println(Arrays.toString(c1));
-		char[] c2=word2.toCharArray(); System.out.println(Arrays.toString(c2));
-		char[] output=new char[length];
+		int word1Length=word1.length(),word2Length=word2.length();
+		char[] output=new char[word1Length+word2Length];
 		int x=0;
-		for(int i=0;i<length;i++) {
-			if(left<right){
-				output[x++]=c1[left];
-				left++;
+		for(int i=0;i<output.length;i++) {
+			if(i<word1Length) {
+				output[x++]=word1.charAt(i);
 			}
-			if(right>left) {
-				
-			}
+			if(i<word2Length) {
+				output[x++]=word2.charAt(i);
+			}	
 		}
-		String s="";
-		s=s.valueOf(output);
-		System.out.println(s);
-		return s;
+		System.out.println(Arrays.toString(output));
+		
+		return String.valueOf(output);
 	}
-	public static void main(String[] args) {
+	@Test
+	public void tdn1() {
 		String word1="ab";
 		String word2="pq1";
-		String expected="apbqcr";
+		String expected="apbq1";
+		String actual=mergeAlternately(word1,word2);
+		Assert.assertEquals(expected, actual);
+	}
+	@Test
+	public void tdn2() {
+		String word1="abcd";
+		String word2="pq";
+		String expected="apbqcd";
 		String actual=mergeAlternately(word1,word2);
 		Assert.assertEquals(expected, actual);
 	}
 
+	@Test
+	public void tdp1() {
+		String word1="abcd";
+		String word2="pqrs";
+		String expected="apbqcrds";
+		String actual=mergeAlternately(word1,word2);
+		Assert.assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void tdn3() {
+		String word1="";
+		String word2="pqrs";
+		String expected="pqrs";
+		String actual=mergeAlternately(word1,word2);
+		Assert.assertEquals(expected, actual);
+	}
+	@Test
+	public void tdn4() {
+		String word1="abcd";
+		String word2="";
+		String expected="abcd";
+		String actual=mergeAlternately(word1,word2);
+		Assert.assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void tdE1() {
+		String word1="";
+		String word2="";
+		String expected="";
+		String actual=mergeAlternately(word1,word2);
+		Assert.assertEquals(expected, actual);
+	}
 }

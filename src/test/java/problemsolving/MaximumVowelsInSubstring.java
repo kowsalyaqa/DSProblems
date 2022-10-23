@@ -14,6 +14,7 @@ public class MaximumVowelsInSubstring {
 			for(int j=i;j<k;j++){
 				if(s.charAt(j)=='a'|s.charAt(j)=='e'|s.charAt(j)=='i'|s.charAt(j)=='o'|s.charAt(j)=='u'){
 					count++;
+					max=Math.max(max, count);
 				}
 			}
 		}
