@@ -1,15 +1,11 @@
 package problemsolving;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class IntersectionofArraysII350BruteforceApproach {
+public class IntersectionofArraysII350TwoPointerApproach {
 
 	/*Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
 	 * 
@@ -17,9 +13,9 @@ public class IntersectionofArraysII350BruteforceApproach {
 	 *  	Positive - nums1[1,2,2,1], nums2=[2,2] ,output: [2,2]
 	 *  	Negative - nums1[1,1,1,1], nums2=[3] output: []
 
-			int nums1[]= {4,9,5};
-			int nums2[]= {9,4,9,8,4};
-			int expected[]= {4,9};
+				int nums1[]= {4,9,5};
+				int nums2[]= {9,4,9,8,4};
+				int expected[]= {4,9};
 	 *  
 	 *  Pseudo Code:
 	 *  1.Read two integer arrays nums1 and nums2
@@ -43,35 +39,19 @@ public class IntersectionofArraysII350BruteforceApproach {
 		Arrays.sort(nums1);
 		Arrays.sort(nums2);
 		int[] output=new int[nums1.length+nums2.length];
-		int x=0,k=0,count=0,count1=0;
-		for(int i=0;i<nums1.length;i++) {
-			count=count(nums1,nums1[i]);	
-			System.out.println("count:"+count);
-			for(int j=0;j<nums2.length;j++) {
-				count1=count(nums2,nums2[j]);
-				System.out.println("count1:"+count1);
-				int min=0;
-				if(count<count1) {
-					min=count;
-				}else if(count>count1) {
-					min=count1;
-				}else if(count==count1){
-					min=count;
-				}
-				System.out.println("Min: "+min);
-				if(nums1[i]==nums2[j] && min==1) {
-					output[x++]=nums1[i];
-					k++;
-					System.out.println(Arrays.toString(output));
-					break;
-				}else if(nums1[i]==nums2[j]) {
-					output[x++]=nums1[i];
-					k++;
-					System.out.println(Arrays.toString(output));
-				}
+		int left=0, right=0,x=0,k=0;
+		while(left<nums1.length && right<nums2.length){
+			if(nums1[left]<nums2[right]){
+				left++;
+			}else if(nums1[left]>nums2[right]){
+				right++;
+			}else{
+				output[x++]=nums1[left];
+				left++;
+				right++;
+				k++;
 			}
 		}
-
 
 		System.out.println(Arrays.toString(output));
 		int[] actual=Arrays.copyOfRange(output,0,k);
@@ -79,23 +59,12 @@ public class IntersectionofArraysII350BruteforceApproach {
 
 	}
 
-	public int count(int[] num, int val) {
-		int count=0;
-		for (int n2 : num) {
-			if(n2==val) {
-				count++;
-			}
-		}
-		return count;
-	}
-
 	@Test
 	public void positive() {
-		int nums1[]= {1,2,2,1};
-		int nums2[]= {2};
+		int nums1[]= {4,9,5};
+		int nums2[]= {9,4,9,8,4};
 		int expected[]= {4,9};
 		int actual[]=intersect(nums1, nums2);
 		Assert.assertArrayEquals(expected, actual);
 	}
-
 }

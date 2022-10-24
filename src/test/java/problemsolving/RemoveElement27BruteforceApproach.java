@@ -30,42 +30,35 @@ public class RemoveElement27BruteforceApproach {
 	 *  
 	 *  */
 
-	public static int removeOccurence(int[] n, int v) {
-		int temp=0;
-		for(int i=0;i<n.length;i++) {
-			for(int j=i+1;j<n.length;j++) {
-				if(n[i]<n[j]) {
-					temp=n[i];
-					n[i]=n[j];
-					n[j]=temp;
+	public static int removeOccurence(int[] nums, int val) {
+		int temp=0,k=0;
+		for(int i=0;i<nums.length;i++) {
+			for(int j=i+1;j<nums.length;j++) {
+				if(nums[i]>nums[j]) {
+					temp=nums[i];
+					nums[i]=nums[j];
+					nums[j]=temp;
 				}
 			}
 		}
-		Set<Integer> set=new LinkedHashSet<>();
-		for(int n1:n){
-		set.add(n1);
+		System.out.println(Arrays.toString(nums));
+		for(int i:nums) {
+			if(i!=val) {
+				nums[k]=i;
+				k++;
+			}	
 		}
-	System.out.println(Arrays.toString(n));
-	System.out.println(set);
-	
-		int j=0;
-		for(int k=0;k<set.size()-1;k++) {
-			  if(n[k]==v){
-	                n[k]=0;
-	                j++;
-	            }
-		}
-		System.out.println(Arrays.toString(n));
-		System.out.println(j);
-		return j;
+		System.out.println(Arrays.toString(nums));
+		System.out.println(k);
+		return k;
 	}
 
 
 
 	public static void main(String[] args) {
-		int[] nums= {0,1,2,2,3,0,4,2};
-		int val=2;
-		int expected=3;
+		int[] nums= {3,2,2,3};
+		int val=3;
+		int expected=2;
 		int actual=removeOccurence(nums,val);
 		Assert.assertEquals(expected, actual);
 
