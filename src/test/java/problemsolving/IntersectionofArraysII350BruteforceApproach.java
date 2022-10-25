@@ -1,11 +1,6 @@
 package problemsolving;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -93,7 +88,7 @@ public class IntersectionofArraysII350BruteforceApproach {
 	public void positive() {
 		int nums1[]= {1,2,2,1};
 		int nums2[]= {2};
-		int expected[]= {4,9};
+		int expected[]= {2};
 		int actual[]=intersect(nums1, nums2);
 		Assert.assertArrayEquals(expected, actual);
 	}
