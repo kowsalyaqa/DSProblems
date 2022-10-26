@@ -22,8 +22,9 @@ public class ReverseVowelsofaString345TwoPointerApproach {
 	 * 
 	 * Pseudo Coe:
 	 * 1.Read input string
-	 * 2.Iterate for loop from i<s.length, Find Vowels alone and Store it new String
-	 * 3.Iterate for loop from s.length to zero,Find vowel and replace the vowel with last vowel for stored vowel string
+	 * 2.Initialize int left=0,right=s.length-1
+	 * 3.Loop using while(left<right) inside while find Vowels character from left and Right, if both are same swap it
+	 * 4.Once Loop complete return string from function, compare with expected results using assertions
 
 	 * 
 	 */
