@@ -59,7 +59,7 @@ public class MinimumRecolors2379SlidingWindowApproach {
 	public  int recoloringBlocks(String blocks,int k){
 		if(k==1){
 			boolean flag=blocks.contains("W");
-			if(flag) return 0;
+			if(!flag) return 0;
 		}
 		int count=0,pointer=0,min=0;
 		while(pointer<blocks.length()) {
