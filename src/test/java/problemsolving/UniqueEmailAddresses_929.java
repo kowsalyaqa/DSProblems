@@ -42,6 +42,14 @@ public class UniqueEmailAddresses_929 {
 
 		Time Complexity - O(N^4)
 		Space Complexity - O(N)
+		
+		Total time: 3 hour 18mins
+		------------
+		1. 7:30 mins
+		2. 14 mins
+		3. 27 mins
+		4. 40 mins
+		5. 1 hour 50 mins
 
 
 
