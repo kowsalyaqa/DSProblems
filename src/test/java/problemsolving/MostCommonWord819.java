@@ -105,6 +105,7 @@ public class MostCommonWord819 {
 			for (int j = 0; j < banned.length; j++) {
 				if (paragraphArr[i].equalsIgnoreCase(banned[j])) {
 					mismatch = true;
+					break;
 				}
 			}
 			if (!mismatch)

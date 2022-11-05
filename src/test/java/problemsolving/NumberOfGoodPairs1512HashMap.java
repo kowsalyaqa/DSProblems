@@ -44,7 +44,7 @@ public class NumberOfGoodPairs1512HashMap {
 	public void tdp1() {
 		int[] nums = { 1, 2, 3, 1, 1, 3 };
 		int expected = 4;
-		int actual = numIdenticalPairs(nums);
+		int actual = numIdenticalPairs1(nums);
 		Assert.assertEquals(expected, actual);
 	}
 
@@ -52,7 +52,7 @@ public class NumberOfGoodPairs1512HashMap {
 	public void tdn1() {
 		int[] nums = { 1, 1, 1, 1 };
 		int expected = 6;
-		int actual = numIdenticalPairs(nums);
+		int actual = numIdenticalPairs1(nums);
 		Assert.assertEquals(expected, actual);
 	}
 
@@ -60,7 +60,7 @@ public class NumberOfGoodPairs1512HashMap {
 	public void tde1() {
 		int[] nums = { 1, 2, 3 };
 		int expected = 0;
-		int actual = numIdenticalPairs(nums);
+		int actual = numIdenticalPairs1(nums);
 		Assert.assertEquals(expected, actual);
 	}
 
@@ -74,6 +74,17 @@ public class NumberOfGoodPairs1512HashMap {
 			} else {
 				map.put(i, 1);
 			}
+		}
+		System.out.println(count);
+		return count;
+	}
+	
+	public int numIdenticalPairs1(int[] nums) {
+		int count = 0;
+		Map<Integer, Integer> map = new HashMap<>();
+		for (int i : nums) {
+			map.put(i, map.getOrDefault(i, 0)+1);
+			if(map.get(i)!=1)count+=map.get(i)-1;
 		}
 		System.out.println(count);
 		return count;
