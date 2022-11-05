@@ -57,9 +57,9 @@ public class UniqueMorseCodeWords804 {
 		String[] codeforLetters={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
 		 Set<String> set = new HashSet<>();
 	        for (String word: words) {
-	            String s = new String();
-	            for (char c: word.toCharArray()) {
-	                s = s + codeforLetters[c - 'a'];
+	            String s = "";
+	            for (char ch: word.toCharArray()) {
+	                s = s + codeforLetters[ch - 'a'];
 	            }
 	            set.add(s);
 	        }
