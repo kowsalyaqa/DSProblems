@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class SumOfUniqueElements1748 {
 
-	@Test
+	//@Test
 	public void tdp1() {
 		int[] nums= {1,2,3,2};
 		int expected=4;
@@ -12,7 +12,7 @@ public class SumOfUniqueElements1748 {
 		Assert.assertEquals(expected,actual);	
 	}
 
-	@Test
+	//@Test
 	public void tdp2() {
 		int[] nums= {1,2,3,2};
 		int expected=4;

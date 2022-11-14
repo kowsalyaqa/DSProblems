@@ -61,7 +61,6 @@ public class LongestSubstringwithAtLeastKRepeatingCharacters395 {
 		        }
 		        j++;
 		    }
-		 
 		    if(i!=j)
 		         max = Math.max(max, longestSubstring(s.substring(i, j), k));
 		 

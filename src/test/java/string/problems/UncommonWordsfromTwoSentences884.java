@@ -2,8 +2,10 @@ package string.problems;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -39,6 +41,7 @@ public class UncommonWordsfromTwoSentences884 {
                list.add(s);
            }
        }
+       
        return list.toArray(new String[list.size()]);
 
 	}
