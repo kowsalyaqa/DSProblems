@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.Assert;
 import org.junit.Test;
 
-import junit.framework.Assert;
 
 public class FindAllAnagramsInAString438 {
 	/**
@@ -24,22 +24,18 @@ public class FindAllAnagramsInAString438 {
 		7.increment pointer,add increment pointer value of s string into map with frequency
 		8.once iteration is completed return list value
 	 * 
-	 * Code - 17:41
+	 * Code - 1 hour
+	 * Run & Debug - 1 hour
 	 * 
+	 * Total Time - 3 hour
 	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
+	 * Time complexity - O(N^M)
+	 * Space Complexity - O(N+M)
 	 * 
 	 * 
 	 * 
 	 */
-	@Test
+	//@Test
 	public void tdp1() {
 		String s="cbaebabacd";
 		String p="abc";
@@ -49,34 +45,65 @@ public class FindAllAnagramsInAString438 {
 		List<Integer> actual=findAnagrams(s,p);
 		Assert.assertEquals(expected, actual);
 	}
+	//@Test
+	public void tdp2() {
+		String s="abab";
+		String p="ab";
+		List<Integer> expected=new ArrayList<>();
+		expected.add(0);
+		expected.add(1);
+		expected.add(2);
+		List<Integer> actual=findAnagrams(s,p);
+		Assert.assertEquals(expected, actual);
+	}
+	@Test
+	public void tdp3() {
+		String s="abacbabc";
+		String p="abc";
+		List<Integer> expected=new ArrayList<>();
+		expected.add(1);
+		expected.add(2);
+		expected.add(3);
+		expected.add(5);
+		List<Integer> actual=findAnagrams(s,p);
+		Assert.assertEquals(expected, actual);
+	}
+
+	@Test
+	public void tdp4() {
+		String s="aaaaaaaaaa";
+		String p="aaaaaaaaaaaaa";
+		List<Integer> expected=new ArrayList<>();
+		List<Integer> actual=findAnagrams(s,p);
+		Assert.assertEquals(expected, actual);
+	}
 
 	public List<Integer>findAnagrams(String s, String p){
+		if(s.length()<p.length()) return new ArrayList<>();
 		int pointer=0;
 		List<Integer> list=new ArrayList<>();
 		Map<Character,Integer> sMap=new HashMap<>();
 		Map<Character,Integer> pMap=new HashMap<>();
 		
-		for(char c:p.toCharArray()) {
-			pMap.put(c,pMap.getOrDefault(c,0)+1);
-		}
-
+		for(char c:p.toCharArray()) pMap.put(c,pMap.getOrDefault(c,0)+1);
+		
 		while(pointer<p.length()) {
-			sMap.put(s.charAt(pointer),sMap.getOrDefault(pMap, 0)+1);
+			sMap.put(s.charAt(pointer),sMap.getOrDefault(s.charAt(pointer),0)+1);
 			pointer++;
 		}
+		if (sMap.equals(pMap)) list.add(pointer-p.length());
 		
-		while(pointer<s.length()) {
-			if(sMap.equals(pMap))list.add(s.indexOf(s.charAt(
-					pointer-p.length())));
-			sMap.put(s.charAt(pointer),sMap.getOrDefault(s.charAt(pointer), 0)+1);	
-			if(sMap.get(s.charAt(pointer-p.length()))==1) {
+		while(pointer<s.length()) {	
+			Integer frequency = sMap.get(s.charAt(pointer-p.length()));
+			if(frequency==1) {
 				sMap.remove(s.charAt(pointer-p.length()));
 			}else {
-			sMap.put(s.charAt(pointer-p.length()),sMap.get(s.charAt(pointer-p.length()))-1);
+			sMap.put(s.charAt(pointer-p.length()),sMap.getOrDefault(s.charAt(pointer-p.length()),0)-1);
 			}
-			pointer++;		
+			sMap.put(s.charAt(pointer),sMap.getOrDefault(s.charAt(pointer), 0)+1);
+			if (sMap.equals(pMap)) list.add(pointer-p.length()+1);
+			pointer++;
 		}
-		
 		return list;
 	}
 }
