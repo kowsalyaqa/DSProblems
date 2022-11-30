@@ -33,26 +33,20 @@ public class MinimumRecolors2379 {
 				maxCountB=Math.max(maxCountB, countB);
 			}
 		}
-		
 		return k-maxCountB;
 	}
 	   public int minimumRecolorsSW(String blocks, int k) {
-	       int  pointer =0, count=0, min=Integer.MAX_VALUE;
-	     while(pointer<blocks.length()-k-1){
-	            k=pointer+k;
-	            count=0;
-	            while(pointer<k){
-	            if(blocks.charAt(pointer)=='W'){
-	                count++;     
-	            }
-	                pointer++;
-	            }
-	        min= Math.min(min,count);    
-	        pointer=pointer-k+1;
-	     }
-	        
+		   int i=0,count=0,min;
+	        while(i<k){
+	            if(blocks.charAt(i++)=='W')count++;
+	        }
+	        min=count;
+	        while(i<blocks.length()){
+	            if(blocks.charAt(i-k)=='W')count--;
+	            if(blocks.charAt(i++)=='W')count++;
+	            min=Math.min(min,count);
+	        }
 	        return min;
-
 	    }
 	
 }
