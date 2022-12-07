@@ -36,7 +36,7 @@ public class MinimumRecolors2379 {
 		return k-maxCountB;
 	}
 	   public int minimumRecolorsSW(String blocks, int k) {
-		   int i=0,count=0,min;
+		   int i=0,count=0,min=0;
 	        while(i<k){
 	            if(blocks.charAt(i++)=='W')count++;
 	        }

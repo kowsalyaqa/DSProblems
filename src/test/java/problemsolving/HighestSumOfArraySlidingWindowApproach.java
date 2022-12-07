@@ -73,6 +73,8 @@ public class HighestSumOfArraySlidingWindowApproach {
 		}
 		
 		System.out.println(max);
+		
+		Math.max(max, max)
 		return max;
 	}
 	@Test

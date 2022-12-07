@@ -75,7 +75,6 @@ public class DecodeString394 {
 	@Test
 	public void tdp3() {
 		String s="2[abc]3[cd]ef";
-		s.
 		String expected="abcabccdcdcdef";
 		String actual=decodeString(s);
 		Assert.assertEquals(expected, actual);
