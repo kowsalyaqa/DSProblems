@@ -11,6 +11,46 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class RepeatedDNASequences187 {
+	
+	/*
+	 * UQ: 17 mins
+	 * 
+	 * Test Data:
+	 * 
+	 * Input: s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT" Output:
+	 * ["AAAAACCCCC","CCCCCAAAAA"]
+	 * 
+	 * 
+	 * Input: s = "AAAAAAAAAAAAA" Output: ["AAAAAAAAAA"]
+	 * 
+	 * 
+	 * Input: s = "AAAAAAAAAACCCCCCC" Output: [""]
+	 * 
+	 * Input: s = "A" Output: [""]
+	 * 
+	 * Input: s = "BBBBBBBBBBBBBYYYYYYYYYY" Output: [""]
+	 * 
+	 * Input: s = "AAAAAAAAAAA" Output: [""]
+	 * 
+	 * 
+	 * 
+	 * PC: --- 
+	 * 1.String length is less than 10 return empty list 
+	 * 2.Iterate for loop
+	 * s.length(),i=0,i++
+	 *  3.Extract substring(i,i+10) 
+	 *  4.create HashMap String integer 
+	 * 5.add if map.contains(substring) with count 1 
+	 * 6.else check key value>1 then add in list 
+	 * 7.return result
+	 * 
+	 * Code:8:26 - 8:42
+	 * 
+	 * TC - O(N)
+	 * SP - O(N)
+	 * 
+	 * 
+	 */
 
 	@Test
 	public void tdp1() {
@@ -68,6 +108,7 @@ public class RepeatedDNASequences187 {
 		Assert.assertEquals(expected, actual);
 	}
 
+	//HashMap and set solution
 	public List<String> findRepeatedDnaSequences(String s) {
 		Set<String> list = new HashSet<>();
 		if (s.length() < 10)

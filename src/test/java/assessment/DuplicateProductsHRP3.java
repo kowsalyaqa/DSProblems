@@ -24,7 +24,7 @@ public class DuplicateProductsHRP3 {
 		String[] strArray=new String[name.size()];
 		String s="";
 		for(int i=0;i<strArray.length;i++) {
-			s=name.get(i)+price.get(i)+weight.get(i);
+			s=name.get(i)+" "+price.get(i)+" "+weight.get(i);
 			strArray[i]=s;
 			s="";
 		}

@@ -51,6 +51,9 @@ public class RemoveElement27 {
 	 * 3.if nums[left]!=val ,if yes, Assign nums[right]=nums[left] increment right and left by 1
 	 * 4.else increment left by 1
 	 * 5.return right index value from method
+	 * 
+	 * code - 5mins
+	 * Run - 2 mins
 	 */
 	
 	@Test 
