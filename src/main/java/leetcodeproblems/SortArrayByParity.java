@@ -91,4 +91,26 @@ public class SortArrayByParity {
         }
         return nums;
     }
+
+
+    /**
+     * Bruteforce approach
+     */
+
+
+    private int[] sortArrayByParityBFA(int[] nums) {
+        int left=0,right=nums.length-1,temp=0;
+        while(left<right){
+            if(nums[left]%2!=0 && nums[right]%2==0 ){
+                temp=nums[left];
+                nums[left++]=nums[right];
+                nums[right--]=temp;
+            }else if(nums[left]%2==0 && nums[right]%2==0 ){
+                left++;
+            }else{
+                right--;
+            }
+        }
+        return nums;
+    }
 }
